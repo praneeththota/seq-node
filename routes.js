@@ -17,9 +17,9 @@ router.post('/register', async(ctx) => {
   user  = db.User.create({
     firstName: ctx.request.body.firstName,
     lastName: ctx.request.body.lastName,
-    email: 'praneeth.thota@pnmac.com',
-    password: 'test',
-    username: 'pthota',
+    email: ctx.request.body.email,
+    password: ctx.request.body.password,
+    username: ctx.request.body.username,
     createdAt: new Date(),
     updatedAt: new Date()
   })
