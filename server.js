@@ -3,7 +3,7 @@ const Koa = require('koa')
 const bodyParser = require('koa-bodyparser');
 var app = new Koa();
 const schema  = require('./schema')
-
+const  { graphiqlKoa, graphqlKoa } = require('apollo-server-koa');
 var PORT = 8080;
 
 
