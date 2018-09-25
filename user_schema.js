@@ -9,7 +9,6 @@ const {
 } = graphql
 const graphSequel = require('graphql-sequelize');
 var db = require('./models/index')
-const { User } =  db.User
 const _ = require('lodash')
 // dummy data
 var books = [
@@ -87,6 +86,30 @@ const RootQuery = new GraphQLObjectType({
   }
 })
 
+// mutation
+const Mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+      addUser: {
+          type: UserType,
+          args: {
+            firstName: { type: GraphQLString },
+            lastName: { type: GraphQLString },
+            email: { type: GraphQLString }
+          },
+          resolve(parent, args){
+              return db.User.create({
+                firstName: args.firstName,
+                lastName: args.lastName,
+                email: args.email
+              });
+              
+          }
+      }
+  }
+});
+
 module.exports =  new graphql.GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation: Mutation
 })
