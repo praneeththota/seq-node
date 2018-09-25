@@ -33,6 +33,13 @@ const RootQuery = new GraphQLObjectType({
         return db.User.findOne({where: {id: args.id}})
       }
 
+    },
+    // fetch all users
+    users: {
+      type: new GraphQLList(UserType),
+      resolve(parent, args){
+          return db.User.findAll();
+      }
     }
   }
 })
