@@ -103,9 +103,26 @@ const Mutation = new GraphQLObjectType({
                 lastName: args.lastName,
                 email: args.email
               });
-              
           }
+      },
+      // update user
+      updateUser: {
+        type: UserType,
+        args: {
+          id: {type: GraphQLInt},
+          firstName: {type: GraphQLString},
+          lastName: {type: GraphQLString},
+          email: {type: GraphQLString}
+        },
+        resolve: async (obj, args) => {
+          user = await db.User.update(
+            { firstName: args.firstName },
+            { where: { id: args.id } }
+          );
+          return user;
+        }
       }
+      
   }
 });
 
