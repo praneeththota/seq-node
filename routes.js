@@ -22,6 +22,9 @@ router.get('/user', async (ctx) => {
    ctx.body = user;
 })
 router.post('/register', async(ctx) => {
+  console.log("****************")
+  console.log(ctx.request.body.data)
+  console.log("****************")
   user  = db.User.create({
     firstName: ctx.request.body.firstName,
     lastName: ctx.request.body.lastName,
@@ -29,7 +32,8 @@ router.post('/register', async(ctx) => {
     password: ctx.request.body.password,
     username: ctx.request.body.username,
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
+    data: ctx.request.body.data
   })
   ctx.body = "register success again " + JSON.stringify(ctx.request.body.firstName)
 })
