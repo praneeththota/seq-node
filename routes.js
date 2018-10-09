@@ -6,6 +6,8 @@ var db = require('./models/index')
 const bodyParser = require('koa-bodyparser');
 let schema = require('./user_schema')
 const graphqlHTTP = require('koa-graphql');
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('postgres://postgres:root@localhost:5432/seq-node');
 // body parser
 
 const  { graphiqlKoa, graphqlKoa } = require('apollo-server-koa');
@@ -23,8 +25,11 @@ router.get('/user', async (ctx) => {
 })
 
 router.get('/user_versions', async(ctx) => {
-  const versionsByInstance = await db.User.getVersions();
-  ctx.body = versionsByInstance
+  // const versionsByInstance = await db.Revisions.findAll();
+  // ctx.body = versionsByInstance
+  var users = await sequelize.query('select * from "Revisions"')
+  ctx.body = users;
+
 })
 router.put('/update_user', async(ctx) => {
   // await db.User.update(
