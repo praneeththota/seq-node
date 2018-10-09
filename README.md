@@ -2,12 +2,16 @@ After cloning application go to directory and follow below steps:
 
 creating database (mentioned database configuration in config/config.json)
 
-$ node_modules/.bin/sequelize db:create
+Install sequelize-cli globally
+
+$ npm install sequelize-cli -g
+
+$ sequelize db:create
 
 creating table 
 
-$ node_modules/.bin/sequelize db:migrate
+$ sequelize db:migrate
 
 creating seeds data 
 
-$ node_modules/.bin/sequelize db:seed:all
+$ sequelize db:seed:all
