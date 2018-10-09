@@ -21,10 +21,28 @@ router.get('/user', async (ctx) => {
   var user = await db.User.findOne({where: {id: ctx.request.query.id}})
    ctx.body = user;
 })
+
+router.get('/user_versions', async(ctx) => {
+  const versionsByInstance = await db.User.getVersions();
+  ctx.body = versionsByInstance
+})
+router.put('/update_user', async(ctx) => {
+  // await db.User.update(
+  //   { firstName: ctx.request.query.firstName },
+  //   { where: { id: ctx.request.query.id } }
+  // ).then({ function(result){
+  //   return user;
+  // }
+  // });
+
+  const user = await db.User.findOne({where: {id: ctx.request.query.id}})
+  // now we change a name
+  user.firstName = ctx.request.query.firstName;
+  // update 
+  await user.save();
+  return user;
+})
 router.post('/register', async(ctx) => {
-  console.log("****************")
-  console.log(ctx.request.body.data)
-  console.log("****************")
   user  = db.User.create({
     firstName: ctx.request.body.firstName,
     lastName: ctx.request.body.lastName,

@@ -19,6 +19,7 @@
     "koa-router": "^7.4.0",
     "pg": "^7.4.3",
     "sequelize": "^4.38.1",
-    "sequelize-cli": "^4.1.1"
+    "sequelize-cli": "^4.1.1",
+    "sequelize-version": "0.0.57"
   }
 }
