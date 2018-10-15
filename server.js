@@ -4,6 +4,10 @@ const bodyParser = require('koa-bodyparser');
 var app = new Koa();
 const schema  = require('./schema')
 const  { graphiqlKoa, graphqlKoa } = require('apollo-server-koa');
+// serving static files
+const serve = require('koa-static');
+app.use(serve('./public'));
+
 var PORT = 8080;
 
 
