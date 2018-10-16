@@ -15,8 +15,9 @@ app.use(bodyParser());
 router.use(bodyParser());
 
 /**
- * @api {get} /users List all users
+ * @api {get} /users List all users test
  * @apiName GetUsersList
+ * @apiVersion 0.3.0
  * @apiGroup Users
  * @apiSuccess {Object[]} users Users's list
  * @apiSuccess {Number} users.id User id
@@ -31,7 +32,6 @@ router.use(bodyParser());
  *      "firstName": "Praneeth",
  *      "lastName": "Thota",
  *      "Email": "praneeth.thota@pnmac.com",
- *      "username": "pthota",
  *      "updated_at": "2016-02-10T15:46:51.778Z",
  *      "created_at": "2016-02-10T15:46:51.778Z"
  *    }]
